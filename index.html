@@ -1,39 +1,214 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>GPS-Module in Go</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
 </head>
+<style>
+    body {
+        background-color: #b6b0b0;
+    }
+
+    h1 {
+        /* margin-left: 28pc; */
+        text-align: center;
+        margin-top: 3pc;
+        color: black;
+    }
+
+    .container {
+        position: absolute;
+        width: 340px;
+        height: 460px;
+        margin-left: 36pc;
+        margin-top: 0pc;
+        border-radius: 10px;
+        background: black;
+        box-shadow: black 0px 10px 20px, black 0px 10px 10px;
+    }
+
+    .bt8 {
+        width: 276px;
+        height: 60px;
+        font-size: 28px;
+        margin-top: 1pc;
+        margin-left: 2pc;
+        border-radius: 6px;
+        background-color: #cbcaca;
+    }
+
+    .p1,
+    .p2 {
+        color: brown;
+        font-size: 28px;
+        margin-left: 16px;
+        font-weight: 600;
+        margin-top: 0pc;
+    }
+
+    .p1 {
+        margin-top: 0pc;
+    }
+
+    #first-value,
+    #second-value {
+        width: 140px;
+        height: 40px;
+        font-size: 11px;
+        font-weight: bold;
+        border-radius: 6px;
+        color: black;
+        background-color: #cbcaca;
+    }
+
+    .bt1,
+    .bt2,
+    .bt3,
+    .bt4,
+    .bt5,
+    .bt6 {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        margin-top: 6px;
+        margin-left: 40px;
+        border-radius: 6px;
+        border-radius: 70%;
+        background-color: #cbcaca;
+    }
+
+    .bt1:hover,
+    .bt2:hover,
+    .bt3:hover,
+    .bt4:hover,
+    .bt5:hover,
+    .bt6:hover,
+    .bt7:hover,
+    .bt9:hover {
+        background-color: #ADEFD1FF;
+    }
+
+    .bt7 {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        margin-top: 6px;
+        margin-left: 90px;
+        border-radius: 6px;
+        border-radius: 70%;
+        background-color: #cbcaca;
+    }
+
+    .bt9 {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+        margin-top: 6px;
+        margin-left: 22px;
+        border-radius: 6px;
+        border-radius: 70%;
+        background-color: #cbcaca;
+    }
+</style>
+
 <body>
-		<h1 style="text-align: center; text-decoration-style: none;">Gps Module in go</h1>
-		<table border="1" style="text-align: center; margin-left: auto; margin-right:auto; height: 300px; width: 300px;">
-			<th>S.No</th>
-			<th>Credentials</th>
-			<tr>
-				<td>Longitude</td>
-				<td>23.247906</td>
-			</tr>
-			<tr>
-				<td>Latitude</td>
-				<td>77.502196</td>
-			</tr>
-			<tr>
-				<td>Saved Contact</td>
-				<td>+91-7224085569</td>
-			</tr>
-		</table>
-		<button class="b-1" style="margin: 0; position: absolute; top: 50%; -ms-transform:TranslateY(-50%); transform: translateY(-50%); height: 50px; width: 100px;"><a href="https://www.google.com/maps/@23.2480398,77.5022433,19.25z">Google-Map</a></button>
 
-		<button onclick="my_location()" class = "b-2" style="margin: 0; position: absolute; top: 65%; height: 50px; width: 100px;">Alert !</button>
+    <div class="one">
+        <h1>CALCULATOR</h1>
+        <div class="container">
+            <h2><button class="bt8"><i id="res"></i></button></h2>
+            <div style="display: flex;">
+                <p class="p1"> <input type="text" placeholder="Enter the x variable value" id="first-value"></p>
+                <p class="p2"> <input type="text" placeholder="Enter the y variable value" id="second-value"></p>
+            </div>
+            <div>
+                <button class="bt1" onclick="add()">+</button>
+                <button class="bt2" onclick="sub()">-</button>
+                <button class="bt3" onclick="mul()">x</button>
+            </div>
+            <div>
+                <button class="bt4" onclick="div()">/</button>
+                <button class="bt5" onclick="per()">%</button>
+                <button class="bt6" onclick="square()">x<sup>2</sup></button>
+            </div>
+            <div style="display: flex;">
+                <button class="bt7" onclick="cube()">x <sup>3</sup></button>
+                <div>
+                    <!-- <button class="bt9" onclick="func()">x!</button>
+                    <p id="para"></p> -->
+                    <button class="bt9" onclick="func()">x!</button>
+                    <p id="para"></p>
+                </div>
+            </div>
 
-
+        </div>
+    </div>
 </body>
-<script type="text/javascript">
-	function my_location(){
-		//var x = 5;
-		alert("Credentials sent to +91-7224085569")
+<script>
+    function add() {
+        var x = parseInt(document.getElementById("first-value").value);
+        var y = parseInt(document.getElementById("second-value").value);
+        var sum = x + y;
+        document.getElementById("res").innerHTML = sum;
+    }
+    function sub() {
+        var x = parseInt(document.getElementById("first-value").value);
+        var y = parseInt(document.getElementById("second-value").value);
+        var sum = x - y;
+        document.getElementById("res").innerHTML = sum;
+    }
+    function mul() {
+        var x = parseInt(document.getElementById("first-value").value);
+        var y = parseInt(document.getElementById("second-value").value);
+        var sum = x * y;
+        document.getElementById("res").innerHTML = sum;
+    }
+    function div() {
+        var x = parseInt(document.getElementById("first-value").value);
+        var y = parseInt(document.getElementById("second-value").value);
+        var sum = x / y;
+        document.getElementById("res").innerHTML = sum;
+    }
+    function per() {
+        var x = parseInt(document.getElementById("first-value").value);
+        var y = parseInt(document.getElementById("second-value").value);
+        var sum = (x / y) * 100;
+        document.getElementById("res").innerHTML = sum;
+    }
+    function square() {
+        var x = parseInt(document.getElementById("first-value").value);
+        var y = parseInt(document.getElementById("second-value").value);
+        var sum = x * x;
+        document.getElementById("res").innerHTML = sum;
+    }
+    function cube() {
+        var x = parseInt(document.getElementById("first-value").value);
+        var y = parseInt(document.getElementById("second-value").value);
+        var sum = x * x * x;
+        document.getElementById("res").innerHTML = sum;
+    }
+    function func() {
+        var x = parseInt(document.getElementById("first-value").value);
+        const number = parseInt('enter a positive integer');
+        if (number < 0) {
+            console.log('Error ! factorial for negative number does not exist');
+        }
+        else if (number === 0) {
+            console.log('The factorial of $ {number} is $ {fact}.');
+        }
+        else {
+            let fact=1;
+            for (i=1;i<number;i++) {
+                fact*=number;
+            }
+            console.log("The factorial of"+number+"is"+fact);
+        }
+        document.getElementById("res").innerHTML;
+    }
 
-	}
 </script>
+
 </html>
